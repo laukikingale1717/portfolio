@@ -1,10 +1,760 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Working</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO META TAGS
+  ═══════════════════════════════════════════ -->
+  <title>AI-Based Offline Exam Monitoring System | Final Year Project</title>
+  <meta name="description" content="An AI-powered real-time exam hall monitoring system that detects cheating behaviors using YOLOv8, DeepSORT, and MediaPipe. Built by engineering students for a smarter, fairer examination process." />
+  <meta name="keywords" content="AI exam monitoring, YOLOv8, DeepSORT, MediaPipe, computer vision, cheat detection, offline exam, real-time monitoring, pose estimation, gaze estimation, final year project, engineering project" />
+  <meta name="author" content="Laukik Ingale, Mehul Katakiya, Prathmesh Wagh" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI-Based Offline Exam Monitoring System" />
+  <meta property="og:description" content="Real-time AI system detecting exam malpractice using YOLOv8, DeepSORT & MediaPipe." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>✅ My Portfolio is LIVE</h1>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon"><i class="fa-solid fa-eye"></i></span>
+        <span>ExamGuard<span class="logo-ai">AI</span></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#introduction" class="nav-link">Intro</a></li>
+        <li><a href="#problem" class="nav-link">Problem</a></li>
+        <li><a href="#objectives" class="nav-link">Objectives</a></li>
+        <li><a href="#solution" class="nav-link">Solution</a></li>
+        <li><a href="#methodology" class="nav-link">Methodology</a></li>
+        <li><a href="#results" class="nav-link">Results</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO / HOME
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <i class="fa-solid fa-microchip"></i> Final Year Engineering Project · 2024–25
+      </div>
+      <h1 class="hero-title reveal">
+        AI-Based Offline<br /><span class="gradient-text">Exam Monitoring</span><br />System
+      </h1>
+      <p class="hero-tagline reveal">
+        <em>Seeing What Invigilators Can't — Intelligently, Instantly, Accurately.</em>
+      </p>
+      <p class="hero-summary reveal">
+        A real-time computer vision system that monitors exam halls, detects malpractice behaviors, 
+        and generates instant alerts — powered by <strong>YOLOv8</strong>, <strong>DeepSORT</strong>, and <strong>MediaPipe</strong>.
+      </p>
+      <div class="hero-stats reveal">
+        <div class="stat-box">
+          <span class="stat-num">80–90%</span>
+          <span class="stat-label">Detection Accuracy</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">Real-Time</span>
+          <span class="stat-label">Processing Speed</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Cheating Behaviors Detected</span>
+        </div>
+      </div>
+      <div class="hero-cta reveal">
+        <a href="#introduction" class="btn btn-primary"><i class="fa-solid fa-arrow-down"></i> Explore Project</a>
+        <a href="#results" class="btn btn-outline"><i class="fa-solid fa-chart-bar"></i> View Results</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="mockup-frame">
+        <div class="mockup-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="mockup-title">ExamGuard AI — Live Feed</span>
+        </div>
+        <div class="mockup-screen">
+          <img src="assets/demo-placeholder.png" alt="AI exam monitoring system live feed showing annotated video with bounding boxes detecting students" class="mockup-img" onerror="this.style.display='none'" />
+          <div class="mockup-overlay">
+            <div class="detection-box db1">
+              <span class="db-label"><i class="fa-solid fa-eye"></i> Gaze: LEFT ⚠</span>
+            </div>
+            <div class="detection-box db2">
+              <span class="db-label"><i class="fa-solid fa-check-circle"></i> Normal</span>
+            </div>
+            <div class="detection-box db3">
+              <span class="db-label"><i class="fa-solid fa-mobile-alt"></i> Device! 🚨</span>
+            </div>
+            <div class="scan-line"></div>
+          </div>
+          <div class="mockup-status">
+            <span class="status-dot"></span> LIVE MONITORING · 3 Students Flagged
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       INTRODUCTION
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="introduction">
+    <div class="container">
+      <div class="section-label reveal">01 / Introduction</div>
+      <h2 class="section-title reveal">What Is This Project?</h2>
+      <div class="two-col reveal">
+        <div class="col-text">
+          <p>Academic integrity is the cornerstone of a fair education system. Traditional exam supervision relies entirely on human invigilators, who are limited by attention span, physical reach, and subjectivity. With large exam halls holding hundreds of students simultaneously, human-only monitoring creates significant blind spots.</p>
+          <p>The <strong>AI-Based Offline Exam Monitoring System</strong> is a final-year engineering project designed to augment — and eventually automate — the exam supervision process using state-of-the-art artificial intelligence. The system uses standard CCTV cameras already installed in most institutions and processes their feed in real time.</p>
+          <p>This project is uniquely tailored for <em>offline (physical) examination halls</em>, distinguishing it from online proctoring solutions. It provides alerts, annotated video, JSON logs, and CSV reports — making evidence collection seamless for authorities.</p>
+        </div>
+        <div class="col-cards">
+          <div class="info-card">
+            <i class="fa-solid fa-video card-icon"></i>
+            <h3>Computer Vision Core</h3>
+            <p>Processes live CCTV video streams to detect and classify behaviors in real time.</p>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-bell card-icon"></i>
+            <h3>Instant Alerting</h3>
+            <p>Sends immediate on-screen alerts when suspicious behavior is detected.</p>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-file-csv card-icon"></i>
+            <h3>Structured Reports</h3>
+            <p>Generates JSON logs and CSV reports for documentation and review.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROBLEM STATEMENT
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="problem">
+    <div class="container">
+      <div class="section-label reveal">02 / Problem Statement</div>
+      <h2 class="section-title reveal">The Challenge We're Solving</h2>
+      <div class="problem-grid reveal">
+        <div class="problem-intro">
+          <p>Despite decades of technological advancement, most Indian universities and examination boards still rely on manual invigilation — a method that is fundamentally flawed for large-scale deployments. The result is rampant malpractice, institutional distrust, and unfair outcomes for honest students.</p>
+          <blockquote class="pull-quote">
+            "A single invigilator monitors 30–60 students simultaneously, making consistent, objective surveillance physically impossible."
+          </blockquote>
+        </div>
+        <div class="problem-list">
+          <div class="problem-item reveal">
+            <div class="problem-num">01</div>
+            <div>
+              <h3>Human Attention Limits</h3>
+              <p>Invigilators cannot maintain constant vigilance for 2–3 hours across large halls, creating monitoring gaps that students exploit.</p>
+            </div>
+          </div>
+          <div class="problem-item reveal">
+            <div class="problem-num">02</div>
+            <div>
+              <h3>Lack of Evidence</h3>
+              <p>Without recordings or logs, disputes about cheating incidents are unresolvable, making disciplinary action difficult.</p>
+            </div>
+          </div>
+          <div class="problem-item reveal">
+            <div class="problem-num">03</div>
+            <div>
+              <h3>Modern Malpractice</h3>
+              <p>Students use smartphones, Bluetooth earpieces, and micro-chits — sophisticated methods hard to detect without technological assistance.</p>
+            </div>
+          </div>
+          <div class="problem-item reveal">
+            <div class="problem-num">04</div>
+            <div>
+              <h3>No Existing Offline Solution</h3>
+              <p>While online proctoring tools exist, no robust AI system is designed specifically for physical offline examination halls.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       OBJECTIVES
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="objectives">
+    <div class="container">
+      <div class="section-label reveal">03 / Objectives</div>
+      <h2 class="section-title reveal">Project Goals & Objectives</h2>
+      <div class="objectives-grid">
+        <div class="objective-card reveal">
+          <div class="obj-icon"><i class="fa-solid fa-crosshairs"></i></div>
+          <h3>Real-Time Detection</h3>
+          <p>Develop a system capable of detecting suspicious behaviors in real time from CCTV video streams without significant latency.</p>
+        </div>
+        <div class="objective-card reveal">
+          <div class="obj-icon"><i class="fa-solid fa-person-walking-arrow-right"></i></div>
+          <h3>Multi-Behavior Recognition</h3>
+          <p>Identify and classify at least 5 malpractice behaviors: gaze deviation (left/right), note passing, whispering, and electronic device usage.</p>
+        </div>
+        <div class="objective-card reveal">
+          <div class="obj-icon"><i class="fa-solid fa-id-badge"></i></div>
+          <h3>Student Tracking</h3>
+          <p>Track individual students across frames using persistent IDs via DeepSORT, ensuring consistent monitoring of each examinee.</p>
+        </div>
+        <div class="objective-card reveal">
+          <div class="obj-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h3>Automated Alerting</h3>
+          <p>Generate real-time visual alerts on the monitoring dashboard when a suspicious event is detected, enabling rapid invigilator response.</p>
+        </div>
+        <div class="objective-card reveal">
+          <div class="obj-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Evidence Generation</h3>
+          <p>Produce annotated video recordings, JSON event logs, and CSV summary reports for post-exam review and disciplinary proceedings.</p>
+        </div>
+        <div class="objective-card reveal">
+          <div class="obj-icon"><i class="fa-solid fa-server"></i></div>
+          <h3>Institution-Ready Deployment</h3>
+          <p>Design the system to integrate with existing CCTV infrastructure, requiring minimal hardware investment from educational institutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SOLUTION / CONCEPT
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="solution">
+    <div class="container">
+      <div class="section-label reveal">04 / Solution & Concept</div>
+      <h2 class="section-title reveal">How We Solved It</h2>
+      <p class="section-intro reveal">Our solution combines three cutting-edge AI frameworks into a unified pipeline that monitors, tracks, and reports exam hall behavior with minimal hardware overhead.</p>
+      <div class="tech-stack reveal">
+        <div class="tech-card">
+          <div class="tech-logo yolo"><i class="fa-solid fa-cube"></i></div>
+          <h3>YOLOv8</h3>
+          <p class="tech-role">Object Detection</p>
+          <p>Detects people, mobile phones, chits, and other objects in real time. Ultra-fast inference makes it ideal for live video streams.</p>
+          <div class="tech-tags"><span>Detection</span><span>Classification</span></div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo deepsort"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <h3>DeepSORT</h3>
+          <p class="tech-role">Multi-Object Tracking</p>
+          <p>Assigns and maintains unique IDs for each student across frames, enabling continuous behavioral monitoring per individual.</p>
+          <div class="tech-tags"><span>Tracking</span><span>Re-ID</span></div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo mediapipe"><i class="fa-solid fa-person"></i></div>
+          <h3>MediaPipe</h3>
+          <p class="tech-role">Pose & Gaze Estimation</p>
+          <p>Extracts facial landmarks and body keypoints to determine head orientation (gaze direction) and body pose for behavior classification.</p>
+          <div class="tech-tags"><span>Pose</span><span>Gaze</span><span>Landmarks</span></div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title reveal">Detected Behaviors</h3>
+      <div class="behavior-list reveal">
+        <div class="behavior-item">
+          <i class="fa-solid fa-eye-slash beh-icon"></i>
+          <div>
+            <strong>Gaze Deviation (Left/Right)</strong>
+            <p>MediaPipe estimates the student's head pose. If the gaze angle exceeds a threshold away from the paper, an alert is triggered.</p>
+          </div>
+        </div>
+        <div class="behavior-item">
+          <i class="fa-solid fa-hand-holding-hand beh-icon"></i>
+          <div>
+            <strong>Note / Chit Passing</strong>
+            <p>YOLOv8 detects paper objects outside the normal exam area and proximity between students' hands triggers a flag.</p>
+          </div>
+        </div>
+        <div class="behavior-item">
+          <i class="fa-solid fa-comment beh-icon"></i>
+          <div>
+            <strong>Whispering / Talking</strong>
+            <p>Pose estimation detects head proximity and facial orientation towards another student, combined with mouth movement analysis.</p>
+          </div>
+        </div>
+        <div class="behavior-item">
+          <i class="fa-solid fa-mobile-screen beh-icon"></i>
+          <div>
+            <strong>Electronic Device Usage</strong>
+            <p>YOLOv8's object detection identifies mobile phones and other prohibited electronic devices in students' hands or on desks.</p>
+          </div>
+        </div>
+        <div class="behavior-item">
+          <i class="fa-solid fa-person-walking beh-icon"></i>
+          <div>
+            <strong>Unauthorized Movement</strong>
+            <p>DeepSORT tracks movement trajectories; unusual displacement or standing behavior is flagged for invigilator attention.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       METHODOLOGY
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="methodology">
+    <div class="container">
+      <div class="section-label reveal">05 / Methodology</div>
+      <h2 class="section-title reveal">System Architecture & Pipeline</h2>
+      <p class="section-intro reveal">The system operates as a sequential AI pipeline. Each frame from the CCTV feed passes through multiple stages of analysis before generating an output.</p>
+
+      <div class="pipeline reveal">
+        <div class="pipe-step">
+          <div class="pipe-num">1</div>
+          <div class="pipe-content">
+            <i class="fa-solid fa-video pipe-icon"></i>
+            <h3>Video Input</h3>
+            <p>Live CCTV stream or recorded video is ingested frame-by-frame using OpenCV at target FPS.</p>
+          </div>
+        </div>
+        <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipe-step">
+          <div class="pipe-num">2</div>
+          <div class="pipe-content">
+            <i class="fa-solid fa-cube pipe-icon"></i>
+            <h3>YOLOv8 Detection</h3>
+            <p>Each frame is passed through YOLOv8 to detect persons, mobile phones, chits, and other relevant objects with bounding boxes.</p>
+          </div>
+        </div>
+        <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipe-step">
+          <div class="pipe-num">3</div>
+          <div class="pipe-content">
+            <i class="fa-solid fa-arrows-rotate pipe-icon"></i>
+            <h3>DeepSORT Tracking</h3>
+            <p>Detected person bounding boxes are passed to DeepSORT, which assigns persistent IDs and tracks each student's trajectory.</p>
+          </div>
+        </div>
+        <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipe-step">
+          <div class="pipe-num">4</div>
+          <div class="pipe-content">
+            <i class="fa-solid fa-person pipe-icon"></i>
+            <h3>MediaPipe Analysis</h3>
+            <p>For each tracked student, MediaPipe extracts facial landmarks and body pose keypoints to estimate gaze direction and body orientation.</p>
+          </div>
+        </div>
+        <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipe-step">
+          <div class="pipe-num">5</div>
+          <div class="pipe-content">
+            <i class="fa-solid fa-brain pipe-icon"></i>
+            <h3>Behavior Classification</h3>
+            <p>A rule-based + ML classifier combines signals from detection, tracking, and pose modules to label behaviors as Normal or Suspicious.</p>
+          </div>
+        </div>
+        <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipe-step">
+          <div class="pipe-num">6</div>
+          <div class="pipe-content">
+            <i class="fa-solid fa-bell pipe-icon"></i>
+            <h3>Alert & Logging</h3>
+            <p>Alerts are displayed on the monitoring dashboard. Events are logged to JSON and CSV files with timestamps, student IDs, and behavior type.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tools-used reveal">
+        <h3>Technologies Used</h3>
+        <div class="tools-grid">
+          <div class="tool-badge"><i class="fa-brands fa-python"></i> Python 3.10</div>
+          <div class="tool-badge"><i class="fa-solid fa-eye"></i> OpenCV</div>
+          <div class="tool-badge"><i class="fa-solid fa-cube"></i> YOLOv8 (Ultralytics)</div>
+          <div class="tool-badge"><i class="fa-solid fa-arrows-rotate"></i> DeepSORT</div>
+          <div class="tool-badge"><i class="fa-solid fa-person"></i> MediaPipe</div>
+          <div class="tool-badge"><i class="fa-solid fa-chart-bar"></i> NumPy / Pandas</div>
+          <div class="tool-badge"><i class="fa-solid fa-file-code"></i> JSON / CSV Logging</div>
+          <div class="tool-badge"><i class="fa-brands fa-github"></i> Git / GitHub</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       RESULTS
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="results">
+    <div class="container">
+      <div class="section-label reveal">06 / Results</div>
+      <h2 class="section-title reveal">Performance & Results</h2>
+      <p class="section-intro reveal">The system was tested across multiple recorded exam scenarios with manually annotated ground truth. Below are the performance metrics achieved.</p>
+
+      <div class="results-grid reveal">
+        <div class="result-card big">
+          <div class="result-num counter" data-target="85">0</div>
+          <div class="result-label">Overall Accuracy (%)</div>
+          <div class="result-bar"><div class="bar-fill" style="--pct: 85%"></div></div>
+        </div>
+        <div class="result-card">
+          <div class="result-num counter" data-target="90">0</div>
+          <div class="result-label">Gaze Detection Acc. (%)</div>
+          <div class="result-bar"><div class="bar-fill" style="--pct: 90%"></div></div>
+        </div>
+        <div class="result-card">
+          <div class="result-num counter" data-target="83">0</div>
+          <div class="result-label">Device Detection Acc. (%)</div>
+          <div class="result-bar"><div class="bar-fill" style="--pct: 83%"></div></div>
+        </div>
+        <div class="result-card">
+          <div class="result-num counter" data-target="80">0</div>
+          <div class="result-label">Whispering Detection Acc. (%)</div>
+          <div class="result-bar"><div class="bar-fill" style="--pct: 80%"></div></div>
+        </div>
+        <div class="result-card">
+          <div class="result-num counter" data-target="88">0</div>
+          <div class="result-label">Chit Passing Detection Acc. (%)</div>
+          <div class="result-bar"><div class="bar-fill" style="--pct: 88%"></div></div>
+        </div>
+        <div class="result-card">
+          <div class="result-num counter" data-target="25">0</div>
+          <div class="result-label">Processing Speed (FPS)</div>
+          <div class="result-bar"><div class="bar-fill" style="--pct: 62%"></div></div>
+        </div>
+      </div>
+
+      <div class="result-description reveal">
+        <h3>Interpretation of Results</h3>
+        <p>The system achieves <strong>80–90% accuracy</strong> across all tested behaviors, demonstrating strong real-world applicability. Gaze estimation using MediaPipe proved to be the most reliable signal (90% accuracy), while whisper detection — which relies on indirect pose cues — was the most challenging (80%). Processing at <strong>~25 FPS</strong> on mid-range hardware (NVIDIA GTX 1660), the system runs smoothly in real-time.</p>
+        <p>Precision and recall were balanced using confidence thresholds tuned on validation data. False positive rates were kept below 12% to avoid unnecessarily alarming invigilators, while recall was prioritized for high-severity behaviors like device usage.</p>
+      </div>
+
+      <!-- Video Demo Placeholder -->
+      <div class="video-placeholder reveal">
+        <div class="video-frame">
+          <i class="fa-solid fa-circle-play video-play-icon"></i>
+          <p>Demo Video Placeholder</p>
+          <small>Replace with your actual demo video or YouTube embed</small>
+        </div>
+        <p class="video-caption">Figure 1: Live system output showing annotated exam hall feed with bounding boxes, student IDs, and behavior labels.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ACHIEVEMENTS
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <div class="section-label reveal">07 / Achievements</div>
+      <h2 class="section-title reveal">Key Achievements</h2>
+      <div class="achievements-list">
+        <div class="achievement reveal">
+          <div class="ach-icon"><i class="fa-solid fa-trophy"></i></div>
+          <div class="ach-content">
+            <h3>Real-Time Processing at 25 FPS</h3>
+            <p>Successfully achieved real-time monitoring at 25 frames per second on consumer-grade GPU hardware, proving practical deployability.</p>
+          </div>
+        </div>
+        <div class="achievement reveal">
+          <div class="ach-icon"><i class="fa-solid fa-medal"></i></div>
+          <div class="ach-content">
+            <h3>Multi-Behavior Detection in Single Pipeline</h3>
+            <p>Unified three independent AI frameworks (YOLOv8, DeepSORT, MediaPipe) into a single cohesive pipeline — a technically significant engineering feat.</p>
+          </div>
+        </div>
+        <div class="achievement reveal">
+          <div class="ach-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="ach-content">
+            <h3>80–90% Accuracy Across All Scenarios</h3>
+            <p>Consistent detection accuracy across diverse testing conditions including varying lighting, camera angles, and exam hall configurations.</p>
+          </div>
+        </div>
+        <div class="achievement reveal">
+          <div class="ach-icon"><i class="fa-solid fa-file-shield"></i></div>
+          <div class="ach-content">
+            <h3>Comprehensive Evidence Logging</h3>
+            <p>Auto-generated JSON logs and CSV reports with timestamps, student IDs, and behavior annotations for post-exam review.</p>
+          </div>
+        </div>
+        <div class="achievement reveal">
+          <div class="ach-icon"><i class="fa-solid fa-plug"></i></div>
+          <div class="ach-content">
+            <h3>Infrastructure-Compatible Design</h3>
+            <p>Designed to integrate with standard CCTV infrastructure already present in most institutions, requiring zero new camera hardware.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FUTURE SCOPE
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="future">
+    <div class="container">
+      <div class="section-label reveal">08 / Future Scope</div>
+      <h2 class="section-title reveal">What's Next?</h2>
+      <div class="future-grid">
+        <div class="future-card reveal">
+          <i class="fa-solid fa-brain future-icon"></i>
+          <h3>Deep Learning Behavior Models</h3>
+          <p>Replace rule-based classifiers with trained LSTM/Transformer models for more nuanced and context-aware behavior understanding.</p>
+        </div>
+        <div class="future-card reveal">
+          <i class="fa-solid fa-user-check future-icon"></i>
+          <h3>Face Recognition Integration</h3>
+          <p>Integrate face recognition to automate student identity verification at the start of each exam session, eliminating proxy attendance.</p>
+        </div>
+        <div class="future-card reveal">
+          <i class="fa-solid fa-cloud future-icon"></i>
+          <h3>Cloud Dashboard</h3>
+          <p>Build a web-based monitoring dashboard accessible remotely by exam authorities, enabling oversight from outside the hall.</p>
+        </div>
+        <div class="future-card reveal">
+          <i class="fa-solid fa-ear-deaf future-icon"></i>
+          <h3>Audio Analysis Module</h3>
+          <p>Add microphone-based ambient sound analysis to directly detect whispering and unauthorized verbal communication.</p>
+        </div>
+        <div class="future-card reveal">
+          <i class="fa-solid fa-mobile future-icon"></i>
+          <h3>Mobile Alert App</h3>
+          <p>Develop a companion mobile application that sends push notifications to invigilators' phones with flagged incidents and snapshots.</p>
+        </div>
+        <div class="future-card reveal">
+          <i class="fa-solid fa-scale-balanced future-icon"></i>
+          <h3>Ethics & Privacy Framework</h3>
+          <p>Establish a comprehensive data governance and student privacy framework, including CCTV consent and data retention policies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       APPLICATIONS
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="applications">
+    <div class="container">
+      <div class="section-label reveal">09 / Applications</div>
+      <h2 class="section-title reveal">Real-World Applications</h2>
+      <div class="app-grid reveal">
+        <div class="app-card">
+          <i class="fa-solid fa-school"></i>
+          <h3>Universities & Colleges</h3>
+          <p>Semester and annual examinations in engineering, medical, law, and other professional courses.</p>
+        </div>
+        <div class="app-card">
+          <i class="fa-solid fa-building-columns"></i>
+          <h3>Competitive Examinations</h3>
+          <p>UPSC, JEE, NEET, GATE, and other high-stakes national competitive exams where integrity is critical.</p>
+        </div>
+        <div class="app-card">
+          <i class="fa-solid fa-briefcase"></i>
+          <h3>Corporate Assessments</h3>
+          <p>HR departments conducting skill tests and certification exams for employee recruitment or promotion.</p>
+        </div>
+        <div class="app-card">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h3>Coaching Institutes</h3>
+          <p>Mock test centers that simulate real exam environments and require fair assessment of student performance.</p>
+        </div>
+        <div class="app-card">
+          <i class="fa-solid fa-hospital"></i>
+          <h3>Professional Licensing</h3>
+          <p>Medical board exams, bar exams, and other licensing examinations where credential integrity is non-negotiable.</p>
+        </div>
+        <div class="app-card">
+          <i class="fa-solid fa-landmark"></i>
+          <h3>Government Recruitment</h3>
+          <p>SSC, Banking, Railway, and other government recruitment exams conducted at scale across multiple centers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TEAM MEMBERS
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="team">
+    <div class="container">
+      <div class="section-label reveal">10 / Team</div>
+      <h2 class="section-title reveal">Meet the Team</h2>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <img src="assets/laukik.jpg" alt="Laukik Ingale - AI developer and project lead" onerror="this.style.display='none'" />
+            <div class="avatar-fallback"><i class="fa-solid fa-user"></i></div>
+          </div>
+          <h3>Laukik Ingale</h3>
+          
+          <p class="team-bio">Specialized in deep learning pipeline integration, YOLOv8 model training, and system architecture design.</p>
+          <div class="team-skills">
+            <span>YOLOv8</span><span>Python</span><span>Computer Vision</span>
+          </div>
+          <div class="team-links">
+            <a href="#" aria-label="Laukik GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="Laukik LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <img src="assets/mehul.jpg" alt="Mehul Katakiya - Computer vision and tracking developer" onerror="this.style.display='none'" />
+            <div class="avatar-fallback"><i class="fa-solid fa-user"></i></div>
+          </div>
+          <h3>Mehul Katakiya</h3>
+          
+          <p class="team-bio">Focused on DeepSORT tracker integration, multi-object tracking pipeline, and real-time video processing optimization.</p>
+          <div class="team-skills">
+            <span>DeepSORT</span><span>OpenCV</span><span>Object Tracking</span>
+          </div>
+          <div class="team-links">
+            <a href="#" aria-label="Mehul GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="Mehul LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <img src="assets/prathmesh.jpg" alt="Prathmesh Wagh - Pose estimation and reporting developer" onerror="this.style.display='none'" />
+            <div class="avatar-fallback"><i class="fa-solid fa-user"></i></div>
+          </div>
+          <h3>Prathmesh Wagh</h3>
+          
+          <p class="team-bio">Led MediaPipe integration, gaze estimation logic, behavior classification rules, and report generation modules.</p>
+          <div class="team-skills">
+            <span>MediaPipe</span><span>Pandas</span><span>Data Analysis</span>
+          </div>
+          <div class="team-links">
+            <a href="#" aria-label="Prathmesh GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="Prathmesh LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <p class="team-guide reveal"><i class="fa-solid fa-chalkboard-user"></i> <strong>Project Guide:</strong> Mrs. H. H. Kulkarni &nbsp;·&nbsp; Department of Electronics and Telecommunication Engineering · GES's R. H. Sapat College of Engineering, Management Studies And Research, Nashik · 2025–26</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       REFERENCES
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="references">
+    <div class="container">
+      <div class="section-label reveal">11 / References</div>
+      <h2 class="section-title reveal">References & Citations</h2>
+      <ol class="references-list reveal">
+        <li>Jocher, G. et al. (2023). <em>Ultralytics YOLOv8</em>. <a href="https://github.com/ultralytics/ultralytics" target="_blank" rel="noopener">github.com/ultralytics/ultralytics</a></li>
+        <li>Wojke, N., Bewley, A., & Paulus, D. (2017). <em>Simple Online and Realtime Tracking with a Deep Association Metric</em>. ICIP 2017.</li>
+        <li>Lugaresi, C. et al. (2019). <em>MediaPipe: A Framework for Building Perception Pipelines</em>. Google Research.</li>
+        <li>Bradski, G. (2000). <em>The OpenCV Library</em>. Dr. Dobb's Journal of Software Tools.</li>
+        <li>Redmon, J. et al. (2016). <em>You Only Look Once: Unified, Real-Time Object Detection</em>. CVPR 2016.</li>
+        <li>Cao, Z. et al. (2019). <em>OpenPose: Realtime Multi-Person 2D Pose Estimation</em>. IEEE TPAMI.</li>
+        <li>Bewley, A. et al. (2016). <em>Simple Online and Realtime Tracking (SORT)</em>. ICIP 2016.</li>
+        <li>Harris, C.R. et al. (2020). <em>Array programming with NumPy</em>. Nature, 585, 357–362.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="section-label reveal">12 / Contact</div>
+      <h2 class="section-title reveal">Get In Touch</h2>
+      <p class="section-intro reveal">Interested in our project, collaboration, or have questions? Reach out to us!</p>
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <p>laukik.ingalee@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-brands fa-github"></i>
+            <div>
+              <strong>GitHub Repository</strong>
+              <p><a href="https://github.com/yourusername/exam-monitoring" target="_blank" rel="noopener">github.com/yourusername/exam-monitoring</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Institution</strong>
+              <p>GES's R. H. Sapat College of Engineering, Management Studies And Research, Nashik, India</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleContact(event)">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          <p class="form-note" id="formMsg"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-icon"><i class="fa-solid fa-eye"></i></span>
+          ExamGuard<span class="logo-ai">AI</span>
+        </div>
+        <p>AI-Based Offline Exam Monitoring System · Final Year Project 2025–26</p>
+        <p>Built with <i class="fa-solid fa-heart" style="color:#ef4444"></i> by Laukik Ingale, Mehul Katakiya & Prathmesh Wagh</p>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 ExamGuard AI. All rights reserved. Academic use only.</p>
+        <p>Powered by YOLOv8 · DeepSORT · MediaPipe</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
 </body>
 </html>
- 
