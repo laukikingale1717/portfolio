@@ -1268,10 +1268,11 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
 
 .dashboard-image img {
   width: 100%;
-  max-width: 1000px;
-  height: auto;
+  max-width: 1100px;
   border-radius: 16px;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+
 }
 
 .dashboard-grid {
