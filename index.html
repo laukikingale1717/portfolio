@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- ═══════════════════════════════════════════
        SEO META TAGS
   ═══════════════════════════════════════════ -->
@@ -65,7 +65,7 @@
     <div class="hero-orb orb-3"></div>
     <div class="hero-content">
       <div class="hero-badge reveal">
-        <i class="fa-solid fa-microchip"></i> Final Year Engineering Project · 2024–25
+        <i class="fa-solid fa-microchip"></i> Final Year Engineering Project · 2025–26
       </div>
       <h1 class="hero-title reveal">
         AI-Based Offline<br /><span class="gradient-text">Exam Monitoring</span><br />System
@@ -87,7 +87,7 @@
           <span class="stat-label">Processing Speed</span>
         </div>
         <div class="stat-box">
-          <span class="stat-num">5+</span>
+          <span class="stat-num">4+</span>
           <span class="stat-label">Cheating Behaviors Detected</span>
         </div>
       </div>
@@ -261,7 +261,7 @@
           <div class="tech-logo yolo"><i class="fa-solid fa-cube"></i></div>
           <h3>YOLOv8</h3>
           <p class="tech-role">Object Detection</p>
-          <p>Detects people, mobile phones, chits, and other objects in real time. Ultra-fast inference makes it ideal for live video streams.</p>
+          <p>Detects people, chits, and other objects in real time. Ultra-fast inference makes it ideal for live video streams.</p>
           <div class="tech-tags"><span>Detection</span><span>Classification</span></div>
         </div>
         <div class="tech-card">
@@ -296,18 +296,11 @@
             <p>YOLOv8 detects paper objects outside the normal exam area and proximity between students' hands triggers a flag.</p>
           </div>
         </div>
-        <div class="behavior-item">
-          <i class="fa-solid fa-comment beh-icon"></i>
-          <div>
-            <strong>Whispering / Talking</strong>
-            <p>Pose estimation detects head proximity and facial orientation towards another student, combined with mouth movement analysis.</p>
-          </div>
-        </div>
-        <div class="behavior-item">
+               <div class="behavior-item">
           <i class="fa-solid fa-mobile-screen beh-icon"></i>
           <div>
-            <strong>Electronic Device Usage</strong>
-            <p>YOLOv8's object detection identifies mobile phones and other prohibited electronic devices in students' hands or on desks.</p>
+            <strong>Interaction Between Students</strong>
+            <p>Interaction between students is detected using AI by analyzing proximity, gestures, and behavior.</p>
           </div>
         </div>
         <div class="behavior-item">
@@ -345,7 +338,7 @@
           <div class="pipe-content">
             <i class="fa-solid fa-cube pipe-icon"></i>
             <h3>YOLOv8 Detection</h3>
-            <p>Each frame is passed through YOLOv8 to detect persons, mobile phones, chits, and other relevant objects with bounding boxes.</p>
+            <p>Each frame is passed through YOLOv8 to detect persons, chits, and other relevant objects with bounding boxes.</p>
           </div>
         </div>
         <div class="pipe-arrow"><i class="fa-solid fa-chevron-right"></i></div>
@@ -429,7 +422,7 @@
         </div>
         <div class="result-card">
           <div class="result-num counter" data-target="80">0</div>
-          <div class="result-label">Whispering Detection Acc. (%)</div>
+          <div class="result-label">Supervisor Detection Acc. (%)</div>
           <div class="result-bar"><div class="bar-fill" style="--pct: 80%"></div></div>
         </div>
         <div class="result-card">
@@ -446,7 +439,7 @@
 
       <div class="result-description reveal">
         <h3>Interpretation of Results</h3>
-        <p>The system achieves <strong>80–90% accuracy</strong> across all tested behaviors, demonstrating strong real-world applicability. Gaze estimation using MediaPipe proved to be the most reliable signal (90% accuracy), while whisper detection — which relies on indirect pose cues — was the most challenging (80%). Processing at <strong>~25 FPS</strong> on mid-range hardware (NVIDIA GTX 1660), the system runs smoothly in real-time.</p>
+        <p>The system achieves <strong>80–90% accuracy</strong> across all tested behaviors, demonstrating strong real-world applicability. Gaze estimation using MediaPipe proved to be the most reliable signal (90% accuracy), while Supervisor detection — which relies on indirect colour cues — was the most challenging (80%). Processing at <strong>~25 FPS</strong> on mid-range hardware (NVIDIA GTX 1660), the system runs smoothly in real-time.</p>
         <p>Precision and recall were balanced using confidence thresholds tuned on validation data. False positive rates were kept below 12% to avoid unnecessarily alarming invigilators, while recall was prioritized for high-severity behaviors like device usage.</p>
       </div>
 
@@ -666,12 +659,12 @@
       <ol class="references-list reveal">
         <li>Jocher, G. et al. (2023). <em>Ultralytics YOLOv8</em>. <a href="https://github.com/ultralytics/ultralytics" target="_blank" rel="noopener">github.com/ultralytics/ultralytics</a></li>
         <li>Wojke, N., Bewley, A., & Paulus, D. (2017). <em>Simple Online and Realtime Tracking with a Deep Association Metric</em>. ICIP 2017.</li>
-        <li>Lugaresi, C. et al. (2019). <em>MediaPipe: A Framework for Building Perception Pipelines</em>. Google Research.</li>
-        <li>Bradski, G. (2000). <em>The OpenCV Library</em>. Dr. Dobb's Journal of Software Tools.</li>
+        <li>Sushmita, M. et al. (2023). <em>Automatic Cheating Detection In Exam Hall.</em>.ResearchGate..</li>
+        <li>Sharma, R., & Kumar, A. (2020). <em>AI-based Surveillance Systems: A Review on Cheating Detection in Examination Halls. </em>. International Journal of Computer Applications.</li>
         <li>Redmon, J. et al. (2016). <em>You Only Look Once: Unified, Real-Time Object Detection</em>. CVPR 2016.</li>
         <li>Cao, Z. et al. (2019). <em>OpenPose: Realtime Multi-Person 2D Pose Estimation</em>. IEEE TPAMI.</li>
         <li>Bewley, A. et al. (2016). <em>Simple Online and Realtime Tracking (SORT)</em>. ICIP 2016.</li>
-        <li>Harris, C.R. et al. (2020). <em>Array programming with NumPy</em>. Nature, 585, 357–362.</li>
+        <li>Tong Liu. et al. (2023). <em>AI Proctoring for Offline Examinations with Two-Longitudinal-Stream CNNs.</em>. Proc. Int. Conf. Comput. Vis. Mach. Intell.</li>
       </ol>
     </div>
   </section>
@@ -697,7 +690,7 @@
             <i class="fa-brands fa-github"></i>
             <div>
               <strong>GitHub Repository</strong>
-              <p><a href="https://github.com/yourusername/exam-monitoring" target="_blank" rel="noopener">github.com/yourusername/exam-monitoring</a></p>
+              <p><a href="https://github.com/laukikingale1717/portfolio" target="_blank" rel="noopener">github.com/laukikingale1717/portfolio</a></p>
             </div>
           </div>
           <div class="contact-item">
