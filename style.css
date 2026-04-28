@@ -1219,3 +1219,44 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
   .section-title { font-size: 1.6rem; }
   h1 { font-size: 1.8rem; }
 }
+/* NEW GRID ACHIEVEMENTS */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* CARD STYLE */
+.event-card {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+
+/* IMAGE SIZE FIX */
+.event-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* TEXT SPACING */
+.event-card .ach-content {
+  padding: 12px;
+}
+
+/* HOVER EFFECT */
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}
