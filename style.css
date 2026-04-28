@@ -839,19 +839,28 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
   border-radius: var(--radius-md);
   transition: var(--transition);
 }
-/* ─── EVENT STYLE ACHIEVEMENT (IMAGE TOP) ─── */
+/* ─── GRID LAYOUT FOR NEW ACHIEVEMENTS ─── */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* event card override (image top, text below) */
 .event-card {
-  display: block; /* override flex layout */
+  display: block; /* override flex */
   padding: 0;
   overflow: hidden;
 }
 
+/* same size images */
 .event-image img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
 
+/* spacing for text */
 .event-card .ach-content {
   padding: 15px;
 }
@@ -859,6 +868,13 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
 /* hover effect */
 .event-card:hover {
   transform: translateY(-5px);
+}
+
+/* mobile responsive */
+@media (max-width: 768px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .achievement:hover { border-color: var(--border-accent); transform: translateX(6px); }
 
